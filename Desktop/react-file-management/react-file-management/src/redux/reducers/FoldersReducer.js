@@ -12,7 +12,7 @@ const FoldersReducer =(state = initialState, action) => {
     case types.CREATE_FOLDER:
       return {
         ...state,
-        userFolders: [...state.userFolders, action.payload],
+        userFolders: [...state.userFolders, action.pa yload],
       };
       case types.ADD_FOLDERS:
         return {

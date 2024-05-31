@@ -16,7 +16,7 @@ const addFolders = (payload) => ({
 const setLoading = (payload) => ({
   type: types.SET_LOADING,
   payload,
-});
+}); 
 
 const setChangeFolder = (payload) => ({
   type: types.CHANGE_FOLDER,

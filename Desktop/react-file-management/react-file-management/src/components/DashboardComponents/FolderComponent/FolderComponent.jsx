@@ -1,6 +1,6 @@
 import { shallowEqual, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-
+import ShowFolders from "../ShowFolders/ShowFolders";
 
 const FolderComponent = () => {
   const { folderId } = useParams();
@@ -9,9 +9,9 @@ const FolderComponent = () => {
     (state) => ({
       currentFolderData: state.folders.userFolders.find(
         (folder) => folder.docId === folderId
-      ),
+      )?.data,
       childFolders: state.folders.userFolders.filter(
-        (folder) => folder.parent === folderId
+        (folder) => folder.data.parent === folderId
       )
     }),
     shallowEqual
@@ -19,8 +19,21 @@ const FolderComponent = () => {
 
   return (
     <div>
-      childFolders: {JSON.stringify(childFolders)}
+      
+      {childFolders.length > 0 ? (
+       <>
+        <ShowFolders
+            title={"Created Folders"}
+            type={"folder"}
+             
+            folders={childFolders}
+          />
+       </>
+      ) : (
+        <p className="text-center my-5"> Empty Folder</p>
+      )}
     </div>
+    
   );
 };
 

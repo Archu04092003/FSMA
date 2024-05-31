@@ -7,7 +7,7 @@ const HomeComponent = () => {
   const { isLoading, userFolders } = useSelector(
     (state) => ({
       isLoading: state.folders.isLoading,
-      userFolders: state.folders.userFolders,
+      userFolders: state.folders.userFolders.filter((folder)=>folder.data.parent === "root"),
     }),
     shallowEqual
   );
@@ -21,6 +21,7 @@ const HomeComponent = () => {
           <ShowFolders
             title={"Created Folders"}
             type={"folder"}
+             
             folders={userFolders}
           />
         </>
